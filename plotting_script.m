@@ -18,12 +18,11 @@ sampling = plume_set(1).sampling;
 stimulus_length = plume_set(1).stimulus_length;
 
 time_trial = (sampling:sampling:stimulus_length*2.5+sampling)';
-time_trial2 = repmat(time_trial,1,size(plume_set(1).plume_trial,2));
 
 figure(2)
-plot(time_trial2, plume_set(1).plume_trial, 'b')
+plot(time_trial, plume_set(1).plume_trial, 'b')
 hold on
-plot(time_trial2, plume_set(2).plume_trial, 'r')
+plot(time_trial, plume_set(2).plume_trial, 'r')
 xlabel('Time (s) - ODD onset = 1s')
 ylabel('PID signal (V)');
 title('All plumes');
@@ -32,15 +31,14 @@ hold off
 %% All plumes only superimposed
 
 sampling = plume_set(1).sampling;
-stimulus_length = plume_set(1).stimulus_length - 1;
+stimulus_length = plume_set(1).stimulus_length;
 
 time_trials = (sampling:sampling:stimulus_length+1*sampling)';
-time_trials2 = repmat(time_trials,1,size(plume_set(1).plumes_only,2));
 
 figure(3)
-plot(time_trials2, plume_set(1).plumes_only, 'b')
+plot(time_trials, plume_set(1).plumes_only, 'b')
 hold on
-plot(time_trials2, plume_set(2).plumes_only, 'r')
+plot(time_trials, plume_set(2).plumes_only, 'r')
 xlabel('Time (s)')
 ylabel('PID signal (V)');
 title('All plumes only');

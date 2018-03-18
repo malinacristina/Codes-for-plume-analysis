@@ -1,8 +1,8 @@
 function [] = plot_random_trials(plume_trial, time_trial, n, plume_means, plume_SD) 
     %pick random trials
-    plume_id = randi(size(plume_trial,2), 1, n);
+    %plume_id = randi(size(plume_trial,2), 1, n);
+    plume_id = 1:n;
     
-      
     for i=1:n
         %calculate things
         trial = plume_trial(:,plume_id(i));
@@ -13,7 +13,7 @@ function [] = plot_random_trials(plume_trial, time_trial, n, plume_means, plume_
         mean3SD = mean2SD + SD;
         
         %plot
-        figure(i)
+        figure()
         plot(time_trial, trial, 'b');
         hold on
         plot([1 time_trial(length(time_trial))], [mean mean], 'r-');

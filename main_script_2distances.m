@@ -55,6 +55,7 @@ plume_set(2).distance(1:plume_set(2).stimuli_count) = 80;
 sampling = plume_set(1).sampling;
 time_trial = sampling:sampling:stimulus_length*2.5+sampling;
 time_trial = time_trial';
+time_trials = sampling:sampling:stimulus_length+1*sampling;
 
 %% Signal (integrals) for each trial
 

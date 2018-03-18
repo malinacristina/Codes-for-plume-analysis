@@ -4,17 +4,17 @@ clear all;
 % calls functions to calculate various descriptive statistics and add them
 % to the plume_set that will be stored for further analysis;
 
-data = load('C:\Users\marinc\OneDrive - The Francis Crick Institute\Data\Tunnel Calibration\Raw data\180313\180313_40cm.mat');
+data = load('C:\Users\marinc\OneDrive - The Francis Crick Institute\Data\Tunnel Calibration\Raw data\180314\180314_tightlidrobot_40cm.mat');
 
 stimulus_length = 5;  %for the future read this from spike file
 
 plume_set(1).name = '40cm';
-plume_set(1).plume = data.V180313_40cm_80cm_Ch1.values;
-plume_set(1).sampling = data.V180313_40cm_80cm_Ch1.interval;
-plume_set(1).odour = data.V180313_40cm_80cm_Ch2.values;
-plume_set(1).valve_start = data.V180313_40cm_80cm_Ch3.times;
-plume_set(1).plume_start = data.V180313_40cm_80cm_Ch4.times;
-plume_set(1).stimuli_count = data.V180313_40cm_80cm_Ch4.length;
+plume_set(1).plume = data.V180314_tightlidrobot_Ch1.values;
+plume_set(1).sampling = data.V180314_tightlidrobot_Ch1.interval;
+plume_set(1).odour = data.V180314_tightlidrobot_Ch2.values;
+plume_set(1).valve_start = data.V180314_tightlidrobot_Ch3.times;
+plume_set(1).plume_start = data.V180314_tightlidrobot_Ch4.times;
+plume_set(1).stimuli_count = data.V180314_tightlidrobot_Ch4.length;
 plume_set(1).time = plume_set(1).sampling:plume_set(1).sampling:size(plume_set(1).plume,1)*plume_set(1).sampling;
 plume_set(1).time = plume_set(1).time';
 
@@ -31,17 +31,17 @@ plume_set(1).distance(1:plume_set(1).stimuli_count) = 40;
 
 %% get second set of trials
 
-data = load('C:\Users\marinc\OneDrive - The Francis Crick Institute\Data\Tunnel Calibration\Raw data\180313\180313_80cm.mat');
+data = load('C:\Users\marinc\OneDrive - The Francis Crick Institute\Data\Tunnel Calibration\Raw data\180314\180314_tightlidrobot_80cm.mat');
 
 plume_set(2).name = '80cm';
-plume_set(2).plume = data.V180313_40cm_80cm_Ch1.values;
-plume_set(2).sampling = data.V180313_40cm_80cm_Ch1.interval;
-plume_set(2).odour = data.V180313_40cm_80cm_Ch2.values;
+plume_set(2).plume = data.V180314_tightlidrobot_Ch1.values;
+plume_set(2).sampling = data.V180314_tightlidrobot_Ch1.interval;
+plume_set(2).odour = data.V180314_tightlidrobot_Ch2.values;
 
-plume_set(2).valve_start = data.V180313_40cm_80cm_Ch3.times;
-plume_set(2).plume_start = data.V180313_40cm_80cm_Ch4.times;
+plume_set(2).valve_start = data.V180314_tightlidrobot_Ch3.times;
+plume_set(2).plume_start = data.V180314_tightlidrobot_Ch4.times;
 
-plume_set(2).stimuli_count = data.V180313_40cm_80cm_Ch3.length;
+plume_set(2).stimuli_count = data.V180314_tightlidrobot_Ch3.length;
 
 plume_set(2).time = plume_set(2).sampling:plume_set(2).sampling:size(plume_set(2).plume,1)*plume_set(2).sampling;
 plume_set(2).time = plume_set(2).time';
@@ -59,6 +59,7 @@ plume_set(2).distance(1:plume_set(2).stimuli_count) = 80;
 sampling = plume_set(1).sampling;
 time_trial = sampling:sampling:stimulus_length*2.5+sampling;
 time_trial = time_trial';
+time_trials = sampling:sampling:stimulus_length+1*sampling;
 
 %% Signal (integrals) for each trial
 

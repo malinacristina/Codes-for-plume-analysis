@@ -10,12 +10,12 @@ means = mean(plumes,1);
 
 for i=1:size(plumes,2) % for every trial
     for j=1:size(plumes,1) % for every reading in a trial
-        if plumes(j,i) > (threshold*SD + means(i))
+        if plumes(j,i) > (threshold*SD(i) + means(i))
             points_aboveSD(i) = points_aboveSD(i) + 1;
         end       
     end  
     
-    fraction_aboveSD(i) = points_aboveSD(i);
+    fraction_aboveSD(i) = points_aboveSD(i)/size(plumes,1);
         
 end
 
